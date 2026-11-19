@@ -4,6 +4,7 @@ $products = require __DIR__ . '/data.php';
 
 // ===== Proses tombol "Hapus" =====
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_verify();
     $kode = $_POST['kode'] ?? '';
     if (is_string($kode)) {
         unset($_SESSION['cart'][$kode]);
@@ -40,6 +41,7 @@ $total = 0;
         <td><?= rupiah($subtotal) ?></td>
         <td>
             <form method="post">
+                <?= csrf_field() ?>
                 <input type="hidden" name="kode" value="<?= e((string) $kode) ?>">
                 <button type="submit">Hapus</button>
             </form>

@@ -4,6 +4,7 @@ $products = require __DIR__ . '/data.php';
 
 // ===== Proses form "Tambah" =====
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_verify();
     $kode = $_POST['kode'] ?? '';
     $qty  = filter_var($_POST['qty'] ?? '', FILTER_VALIDATE_INT,
         ['options' => ['min_range' => 1, 'max_range' => 99]]);
@@ -45,6 +46,7 @@ $jumlahItem = array_sum($_SESSION['cart'] ?? []);
         <td><?= rupiah($p['harga']) ?></td>
         <td>
             <form method="post">
+                <?= csrf_field() ?>
                 <input type="hidden" name="kode" value="<?= e($kode) ?>">
                 <input type="number" name="qty" value="1" min="1" max="99" style="width:60px">
                 <button type="submit">Tambah</button>

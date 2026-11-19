@@ -13,6 +13,7 @@ session_set_cookie_params([
 
 // 2. Mulai session
 session_start();
+require __DIR__ . '/csrf.php';   // <-- BARIS BARU
 
 // 3. Fungsi bantu
 function e(string $value): string

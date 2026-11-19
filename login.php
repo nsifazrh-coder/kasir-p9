@@ -11,6 +11,7 @@ $error    = '';
 $username = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    csrf_verify();
     $username = is_string($_POST['username'] ?? null) ? trim($_POST['username']) : '';
     $password = is_string($_POST['password'] ?? null) ? $_POST['password'] : '';
 
@@ -40,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <?php endif; ?>
 
 <form method="post">
+    <?= csrf_field() ?>
     <p>
         <label>Username<br>
             <input type="text" name="username" value="<?= e($username) ?>" required>
