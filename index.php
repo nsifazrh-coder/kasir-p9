@@ -28,7 +28,7 @@ $jumlahItem = array_sum($_SESSION['cart'] ?? []);
     <title>Daftar Produk</title>
 </head>
 <body>
-<h1>Daftar Produk</h1>
+<h1>Daftar Produk - Nasifa Zariah(25110198)</h1>
 <p>
     <a href="keranjang.php">Keranjang (<?= $jumlahItem ?>)</a> |
     <a href="login.php">Login Admin</a>
@@ -46,7 +46,7 @@ $jumlahItem = array_sum($_SESSION['cart'] ?? []);
         <td><?= rupiah($p['harga']) ?></td>
         <td>
             <form method="post">
-                <?= csrf_field() ?>
+                <?= csrf_field() ;?>
                 <input type="hidden" name="kode" value="<?= e($kode) ?>">
                 <input type="number" name="qty" value="1" min="1" max="99" style="width:60px">
                 <button type="submit">Tambah</button>
